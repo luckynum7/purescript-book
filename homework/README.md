@@ -1,13 +1,13 @@
-- [PureScript Homework](#org6c199d9)
+- [PureScript Homework](#org04e9a63)
 
 
 
-<a id="org6c199d9"></a>
+<a id="org04e9a63"></a>
 
 # PureScript Homework
 
 ```bash
 bower i
-pulp build -O -t output.js
+pulp build -O -t docs/output.js
 http-server docs
 ```
