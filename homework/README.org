@@ -1,0 +1,11 @@
+#+TITLE:      purescript-book homework
+#+OPTIONS:    ^:{}
+#+REPOSITORY: https://github.com/luckynum7/purescript-book
+
+* PureScript Homework
+
+#+BEGIN_SRC bash
+bower i
+pulp build -O -t output.js
+http-server docs
+#+END_SRC
