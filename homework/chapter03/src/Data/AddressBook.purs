@@ -42,3 +42,9 @@ findEntryByStreet street = head <<< filter filterEntry
   where
     filterEntry :: Entry -> Boolean
     filterEntry entry = entry.address.street == street
+
+removeDuplicates :: String -> String -> AddressBook -> AddressBook
+removeDuplicates firstName lastName = nubBy filterEntry
+  where
+    filterEntry :: Entry -> Boolean
+    filterEntry entry = entry.firstName == firstName && entry.lastName == lastName
