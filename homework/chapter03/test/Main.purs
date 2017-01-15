@@ -5,6 +5,7 @@ import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Data.AddressBook (AddressBook, Entry, emptyBook, insertEntry, findEntry, findEntryByStreet, showEntry)
 import Data.Maybe (Maybe)
+import Data.List (null)
 
 example :: Entry
 example =
@@ -33,3 +34,5 @@ main = do
   logShow $ printEntry "John" "Smith" book1
   logShow $ printEntryByStreet "123 Fake St." book0
   logShow $ printEntryByStreet "123 Fake St." book1
+  logShow $ null book0
+  logShow $ null book1
