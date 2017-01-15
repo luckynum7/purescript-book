@@ -4,8 +4,17 @@
 
 * PureScript Homework
 
+** Chapter 02
+
 #+BEGIN_SRC bash
 bower i
 pulp build -O -t docs/output.js
 http-server docs
+#+END_SRC
+
+** Chapter 03
+
+#+BEGIN_SRC bash
+bower i
+pulp test
 #+END_SRC
