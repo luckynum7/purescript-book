@@ -2,7 +2,7 @@ module Data.AddressBook where
 
 import Prelude
 import Control.Plus (empty)
-import Data.List (List(..), filter, head)
+import Data.List (List(..), filter, head, nubBy)
 import Data.Maybe (Maybe)
 
 type Address =
@@ -43,8 +43,10 @@ findEntryByStreet street = head <<< filter filterEntry
     filterEntry :: Entry -> Boolean
     filterEntry entry = entry.address.street == street
 
-removeDuplicates :: String -> String -> AddressBook -> AddressBook
-removeDuplicates firstName lastName = nubBy filterEntry
+-- TODO: Test if the function works
+removeDuplicates :: AddressBook -> AddressBook
+removeDuplicates = nubBy filterEntry
   where
-    filterEntry :: Entry -> Boolean
-    filterEntry entry = entry.firstName == firstName && entry.lastName == lastName
+    filterEntry ::Entry -> Entry -> Boolean
+    filterEntry entry1 entry2 = entry1.firstName == entry2.firstName &&
+                                entry1.lastName == entry2.lastName

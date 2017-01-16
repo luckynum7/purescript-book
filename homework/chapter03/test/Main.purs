@@ -2,10 +2,10 @@ module Test.Main where
 
 import Prelude
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook (AddressBook, Entry, emptyBook, insertEntry, findEntry, findEntryByStreet, showEntry)
-import Data.Maybe (Maybe)
+import Control.Monad.Eff.Console (CONSOLE, log, logShow)
+import Data.AddressBook (AddressBook, Entry, emptyBook, insertEntry, findEntry, showEntry, findEntryByStreet)
 import Data.List (null)
+import Data.Maybe (Maybe)
 
 example :: Entry
 example =
@@ -30,9 +30,12 @@ main :: Eff (console :: CONSOLE) Unit
 main = do
   let book1 = insertEntry example emptyBook
 
+  log "@findEntry"
   logShow $ printEntry "John" "Smith" book0
   logShow $ printEntry "John" "Smith" book1
+  log "\n@findEntryByStreet"
   logShow $ printEntryByStreet "123 Fake St." book0
   logShow $ printEntryByStreet "123 Fake St." book1
+  log "\n@Data.List.null"
   logShow $ null book0
   logShow $ null book1
