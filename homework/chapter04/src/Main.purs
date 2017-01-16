@@ -23,8 +23,12 @@ countEven arr =
 square :: Array Number -> Array Number
 square arr = (\x -> x * x) <$> arr
 
+infix 8 filter as <$?>
+
 removeNegative :: Array Number -> Array Number
-removeNegative arr = filter (\n -> n > 0.0) arr
+-- removeNegative arr = filter (\n -> n > 0.0) arr
+removeNegative arr = (\n -> n > 0.0) <$?> arr
+
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
