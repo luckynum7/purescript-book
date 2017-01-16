@@ -38,6 +38,6 @@ main = do
   logShow $ countEven $ 1 .. 99
   logShow $ countEven $ 1 .. 100
 
-  logShow $ square $ [1.0, 3.0, 3.5, 7.0, 7.3]
+  logShow $ square $ [0.0, 1.0, 3.0, 3.5, 7.0, 7.3]
 
-  logShow $ removeNegative $ [-0.5, 5.0, 3.7, -2.4, 3.0]
+  logShow $ removeNegative $ [0.0, -0.5, 5.0, 3.7, -2.4, 3.0]
