@@ -1,15 +1,16 @@
-- [PureScript Homework](#org2f83e34)
-  - [Chapter 02](#org552183b)
-  - [Chapter 03](#org859a56e)
+- [PureScript Homework](#org747aa23)
+  - [Chapter 02](#org13754bb)
+  - [Chapter 03](#orga546e37)
+  - [Chapter 04](#orgaa56d94)
 
 
 
-<a id="org2f83e34"></a>
+<a id="org747aa23"></a>
 
 # PureScript Homework
 
 
-<a id="org552183b"></a>
+<a id="org13754bb"></a>
 
 ## Chapter 02
 
@@ -20,11 +21,21 @@ http-server docs
 ```
 
 
-<a id="org859a56e"></a>
+<a id="orga546e37"></a>
 
 ## Chapter 03
 
 ```bash
 bower i
 pulp test
+```
+
+
+<a id="orgaa56d94"></a>
+
+## Chapter 04
+
+```bash
+bower i
+pulp run
 ```
