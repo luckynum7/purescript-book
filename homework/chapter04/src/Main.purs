@@ -65,6 +65,7 @@ triples n =
      guard $ a * a + b * b == c * c -- && a == b
      pure [a,b,c]
 
+-- TODO: make this work as expected
 factorizations :: Int -> Array Int
 factorizations 1 = [1]
 factorizations n =
