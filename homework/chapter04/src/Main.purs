@@ -4,7 +4,7 @@ import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Control.MonadZero (guard)
-import Data.Array (filter, intersect, length, null, (!!), (..))
+import Data.Array (filter, length, null, (!!), (..))
 import Data.Array.Partial (head, tail)
 import Data.Maybe (Maybe)
 import Partial.Unsafe (unsafePartial)
@@ -54,6 +54,17 @@ intersection a b =
      j <- 0 .. bb
      pure [a !! i, b !! j]
 
+triples :: Int -> Array (Array Int)
+triples n =
+  let ln = n - 1
+  in
+   do
+     a <- 1 .. ln
+     b <- a .. ln
+     c <- b .. ln
+     guard $ a * a + b * b == c * c -- && a == b
+     pure [a,b,c]
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
@@ -74,3 +85,5 @@ main = do
   -- logShow $ isPrime 22338618 -- DO NOT TRY
   logShow $ intersection (1 .. 3) (10 .. 11)
   logShow $ intersection ["a","b"] ["c","d","e"]
+
+  logShow $ triples 100
