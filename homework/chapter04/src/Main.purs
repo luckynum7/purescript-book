@@ -4,8 +4,9 @@ import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Control.MonadZero (guard)
-import Data.Array (filter, length, null, (..))
+import Data.Array (filter, intersect, length, null, (!!), (..))
 import Data.Array.Partial (head, tail)
+import Data.Maybe (Maybe)
 import Partial.Unsafe (unsafePartial)
 
 -- 4.4
@@ -43,6 +44,16 @@ factors n = do
 isPrime :: Int -> Boolean
 isPrime n = (length $ factors n) == 1
 
+intersection :: forall a. Array a -> Array a -> Array (Array (Maybe a))
+intersection a b =
+  let aa = (length a) - 1
+      bb = (length b) - 1
+  in
+   do
+     i <- 0 .. aa
+     j <- 0 .. bb
+     pure [a !! i, b !! j]
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
@@ -59,7 +70,7 @@ main = do
   logShow $ removeNegative $ [0.0, -0.5, 5.0, 3.7, -2.4, 3.0]
 
   -- 4.11
-  -- logShow $ factors 7
-  logShow $ isPrime 7
   logShow $ isPrime 773
   -- logShow $ isPrime 22338618 -- DO NOT TRY
+  logShow $ intersection (1 .. 3) (10 .. 11)
+  logShow $ intersection ["a","b"] ["c","d","e"]
