@@ -46,12 +46,12 @@ isPrime n = (length $ factors n) == 1
 
 intersection :: forall a. Array a -> Array a -> Array (Array (Maybe a))
 intersection a b =
-  let aa = (length a) - 1
-      bb = (length b) - 1
+  let la = (length a) - 1
+      lb = (length b) - 1
   in
    do
-     i <- 0 .. aa
-     j <- 0 .. bb
+     i <- 0 .. la
+     j <- 0 .. lb
      pure [a !! i, b !! j]
 
 triples :: Int -> Array (Array Int)
