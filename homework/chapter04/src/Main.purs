@@ -65,25 +65,33 @@ triples n =
      guard $ a * a + b * b == c * c -- && a == b
      pure [a,b,c]
 
+factorizations :: Int -> Array Int
+factorizations 1 = [1]
+factorizations n =
+   [1, n]
+
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
-  -- 4.4
-  logShow $ isEven 99
-  logShow $ isEven 100
-
-  logShow $ countEven $ 1 .. 99
-  logShow $ countEven $ 1 .. 100
-
-  -- 4.7
-  logShow $ square $ [0.0, 1.0, 3.0, 3.5, 7.0, 7.3]
-
-  logShow $ removeNegative $ [0.0, -0.5, 5.0, 3.7, -2.4, 3.0]
-
   -- 4.11
-  logShow $ isPrime 773
-  -- logShow $ isPrime 22338618 -- DO NOT TRY
+  logShow $ factorizations 100
+
+  logShow $ triples 100
+
   logShow $ intersection (1 .. 3) (10 .. 11)
   logShow $ intersection ["a","b"] ["c","d","e"]
 
-  logShow $ triples 100
+  logShow $ isPrime 773
+  -- logShow $ isPrime 22338618 -- DO NOT TRY
+
+  -- 4.7
+  logShow $ removeNegative $ [0.0, -0.5, 5.0, 3.7, -2.4, 3.0]
+
+  logShow $ square $ [0.0, 1.0, 3.0, 3.5, 7.0, 7.3]
+
+  -- 4.4
+  logShow $ countEven $ 1 .. 99
+  logShow $ countEven $ 1 .. 100
+
+  logShow $ isEven 99
+  logShow $ isEven 100
