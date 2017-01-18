@@ -77,15 +77,40 @@ factorizations n =
 -- fact 0 acc = acc
 -- fact n acc = fact (n - 1) (acc * n)
 
+-- 4.14
+-- reverse :: forall a. Array a -> Array a
+-- reverse = reverse' []
+--   where
+--     reverse' acc [] = acc
+--     reverse' acc xs = reverse' (unsafePartial head xs : acc)
+--                       (unsafePartial tail xs)
+
 -- 4.15
-reverse' :: forall a. Array a -> Array a
-reverse' = foldl (\xs x -> [x] <> xs) []
+reverse'' :: forall a. Array a -> Array a
+reverse'' = foldl (\xs x -> [x] <> xs) []
+
+allTrue :: Array Boolean -> Boolean
+allTrue = foldl (&&) true
+
+-- TODO: ... foldl (==) false ...
+
+count' :: forall a. (a -> Boolean) -> Array a -> Int
+count' = count'' 0
+  where
+    count'' acc _ [] = acc
+    count'' acc p xs = count'' (if p (unsafePartial head xs) then acc + 1 else acc)
+                       p (unsafePartial tail xs)
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
   -- 4.15
-  logShow $ reverse' $ 1 .. 10
+  logShow $ count' (\x -> x `mod` 7 == 0) (1 .. 1000)
+  
+  logShow $ allTrue $ [true, true, true]
+  logShow $ allTrue $ [true, false, true]
+  
+  logShow $ reverse'' $ 1 .. 10
   
   -- 4.11
   logShow $ factorizations 100
