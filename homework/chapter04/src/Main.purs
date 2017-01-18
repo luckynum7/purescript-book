@@ -6,6 +6,7 @@ import Control.Monad.Eff.Console (CONSOLE, logShow)
 import Control.MonadZero (guard)
 import Data.Array (filter, length, null, (!!), (..))
 import Data.Array.Partial (head, tail)
+import Data.Foldable (foldl)
 import Data.Maybe (Maybe)
 import Partial.Unsafe (unsafePartial)
 
@@ -68,12 +69,24 @@ triples n =
 -- TODO: make this work as expected
 factorizations :: Int -> Array Int
 factorizations 1 = [1]
+factorizations 2 = [1,2]
 factorizations n =
    [1, n]
+
+-- fact :: Int -> Int -> Int
+-- fact 0 acc = acc
+-- fact n acc = fact (n - 1) (acc * n)
+
+-- 4.15
+reverse' :: forall a. Array a -> Array a
+reverse' = foldl (\xs x -> [x] <> xs) []
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
+  -- 4.15
+  logShow $ reverse' $ 1 .. 10
+  
   -- 4.11
   logShow $ factorizations 100
 
