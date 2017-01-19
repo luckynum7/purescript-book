@@ -9,7 +9,7 @@ import Data.Array.Partial (head, tail)
 import Data.Foldable (foldl)
 import Data.Maybe (Maybe)
 import Data.Path (root)
-import FileOperations (onlyFiles)
+import FileOperations (minMax, onlyFiles)
 import Partial.Unsafe (unsafePartial)
 
 -- 4.4
@@ -107,6 +107,7 @@ main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
   -- 4.17
+  logShow $ minMax root
   logShow $ onlyFiles root
   
   -- 4.15
