@@ -8,6 +8,8 @@ import Data.Array (filter, length, null, (!!), (..))
 import Data.Array.Partial (head, tail)
 import Data.Foldable (foldl)
 import Data.Maybe (Maybe)
+import Data.Path (root)
+import FileOperations (onlyFiles)
 import Partial.Unsafe (unsafePartial)
 
 -- 4.4
@@ -104,6 +106,9 @@ count' = count'' 0
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
 
+  -- 4.17
+  logShow $ onlyFiles root
+  
   -- 4.15
   logShow $ count' (\x -> x `mod` 7 == 0) (1 .. 1000)
   
