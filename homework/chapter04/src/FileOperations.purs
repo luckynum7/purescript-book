@@ -18,6 +18,7 @@ allFiles' file = file : do
 onlyFiles :: Path -> Array Path
 onlyFiles file = filter (\x -> not isDirectory x) $ allFiles file
 
+-- TODO: get min max file
 minMax :: Path -> Tuple Int Int
 minMax file =
   foldl minMax' (Tuple 0 0)
@@ -27,3 +28,5 @@ minMax file =
     minMax' tuple Nothing = tuple
     minMax' (Tuple 0 0) (Just z) = Tuple z z
     minMax' (Tuple x y) (Just z) = Tuple (min x z) (max y z)
+
+-- TODO: whereIs function
